@@ -39,9 +39,12 @@ app.use(flash()); //should come before passport configuration
      ]
 */
 
-//mongoose.connect("mongodb://localhost/temple_db"); //connecting to local database
 
-mongoose.connect("mongodb://Akshaykumar9:santharam12@ds213472.mlab.com:13472/temples"); // connect to mLab database
+var url = process.env.DATABASEURL || "mongodb://localhost/temple_db";  // here we're using || because in case if env vairable messes up, it will use the or database
+mongoose.connect(url); //Here we're exporting the local database link to DATABASERUL in process.env.DATABASEURL and for Herouku mlLAB we've added variable in settings of heroku to set key as DATABASEURL and value as mLAB link
+mongoose.connect("mongodb://localhost/temple_db");//connecting to local database
+
+//mongoose.connect("mongodb://Akshaykumar9:santharam12@ds213472.mlab.com:13472/temples"); // connect to mLab database
 
 //schema setup because we want to define the pattern, which needs to be added in database and to maintain consistency
 // If there is a schema update then it is always better to drop the collection by using db.collections.drop(), which returns true
