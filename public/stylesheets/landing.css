@@ -1,0 +1,84 @@
+body {
+  background-color: #000;
+}
+
+#landing-header {
+  z-index: 1;  /*x means screen width , y means screen height, if z>0 then page will come to us and if not page will be far awy from us*/
+  position: relative;  /*if it's static then it will ignore the zindex so we're using relative*/
+  text-align: center;   /*it will center horizontally*/
+  padding-top: 40vh;    /*it will center vertically*/ /*if we 50 then it actually looks like bottom not center*/
+}
+
+#landing-header h1 {
+  color: #fff;
+}
+
+.slideshow { 
+  position: fixed;
+  width: 100%;  /*this will take up the entier width and height*/
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;  /*means background images are behind our text*/
+  list-style: none;   /*li styles to none, so that bullet point will be disappeared*/
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow li { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 50s linear infinite;   /*same speed from beginning to end*/
+}
+
+
+.slideshow li:nth-child(1) { 
+  background-image: url(https://www.awaaznation.com/wp-content/uploads/2017/12/famous-temples-in-andhra-pradesh.jpg) 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(http://www.famousindiantemples.com/wp-content/uploads/2017/02/Lepakshi-Temple.jpg);
+  animation-delay: 10s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYOcLQSG5SoGtmElgPcKv8ePD9QW-NjZD-AFbV301ibXCxU4xn);
+  animation-delay: 20s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(https://s3.ap-southeast-1.amazonaws.com/cdn.deccanchronicle.com/sites/default/files/temple_12.jpg);
+  animation-delay: 30s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(http://onlinedarshan.com/hindu-temples/andhra-pradesh/pic/mallikarjuna-temple.jpg);
+  animation-delay: 40s; 
+}
+
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+}
+
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}

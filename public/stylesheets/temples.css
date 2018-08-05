@@ -1,0 +1,22 @@
+body{
+    background: orange;
+}
+/* images under thumbnail class will get 100% width in thumbnail*/
+.thumbnail img{ 
+    width:100%;
+}
+
+/*will not getting any space between thumbail and image*/
+
+.thumbnail{
+    padding:0;
+}
+
+/*it will add padding to all capiton-full classes under thumbnail class */
+
+.thumbnail .caption-full{
+    padding:9px;
+}
+.delete-form{
+    display: inline
+}

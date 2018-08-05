@@ -1,0 +1,33 @@
+<%include ../partials/header%>
+
+
+<div class="container">
+
+<header class="jumbotron">
+    <div class="container">
+       <h1>Temples in Andhra Pradesh</h1>
+       <p>View temples all over Andhra Pradesh below</p>
+       <p><a class="btn-primary btn-lg" href="/temples/new">Add recently visited temple</a></p>
+   </div>
+</header>
+  <div class="row text-center" style="display:flex; flex-wrap:wrap; background-size:cover;">
+
+   <% temples.forEach(function(temple){%>
+    <div class="col-md-3 col-sm-6">
+        <div class="thumbnail">
+            <img src="<%=temple.image%>">
+         
+        <div class="caption">
+         <h1><%=temple.name %></h1>
+        </div>
+        <p>
+         <a href="/temples/<%=temple._id%>" class="btn btn-primary">more Info</a>
+        </p>
+        </div> 
+    </div>
+    <%}) %>
+  </div>
+
+</div>
+
+<%include ../partials/footer%> 

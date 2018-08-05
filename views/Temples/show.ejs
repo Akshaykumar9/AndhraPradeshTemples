@@ -1,0 +1,82 @@
+<%include ../partials/header%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead"><%=temple.name %></p>
+            <div class="list-group">
+                <li class="list-group-item active">Detailed Information --> </li>
+                
+                <br>
+                <a href="/temples">View All Temples</a>
+              <!--  <li class="list-group-item">Info 2</li>
+                <li class="list-group-item">Info 3</li>-->
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img class="image-responsive" src="<%=temple.image%>">
+                <div class="caption-full">
+                    <h4 class="pull-right">Source : Wikipedia</h4>
+                    <h4><a><%=temple.name %></a></h4>
+                    <p><%=temple.description %></p>
+                    <p>
+  <em>Submitted by: <%= temple.author.username %>, <%= moment(temple.createdAt).fromNow() %></em>
+                    </p>
+                    
+                <%if(currentUser && temple.author.id.equals(currentUser._id)){%>    <!--if statement would fail if we dont use currentUser first ..since if there are no current user then we cannot check if author and currentUser are same or not-->
+                    <a class="btn btn-warning" href="/Temples/<%=temple._id%>/edit">Edit</a>
+                    
+                    <form class="delete-form"  action="/Temples/<%=temple._id%>?_method=DELETE" method="POST">
+                      <button class="btn btn-danger">Delete</button>
+                    </form>
+                    
+                <%}%>
+                </div>
+            </div>
+            <div class="well">
+               <div class="text-right">
+                        <a href="/temples/<%=temple._id%>/comments/new" class="btn btn-success">Add new comment</a>
+               </div> 
+               <hr>
+                       <%temple.comments.forEach(function(comment){%>
+               <div class="row">
+                   <div class="col-md-12">
+                    <Strong><%=comment.author.username%></Strong>
+                    <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
+                    <p><%=comment.text%></p>  
+                     <%if(currentUser && comment.author.id.equals(currentUser._id)){%>
+                    <a class="btn btn-xs btn-warning" href="/temples/<%=temple._id%>/comments/<%=comment._id%>/edit">Edit</a>
+                    <form class="delete-form"  action="/Temples/<%=temple._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                      <button class="btn btn-xs btn-danger">Delete</button>
+                    </form>
+                     <%}%>
+                    <%})%>
+        
+                   </div>
+                   
+               </div>
+                
+            </div>
+            
+        </div>
+        </div>
+    </div>
+
+
+       
+    
+
+            
+        
+       
+          
+        
+        
+   
+        
+   
+
+
+
+<%include ../partials/footer%> 
