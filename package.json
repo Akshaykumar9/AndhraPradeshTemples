@@ -4,8 +4,9 @@
   "description": "Anandicamp",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start" :"npm app.js"
+    "start" :"node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "author": "Akshay",
   "license": "ISC",
